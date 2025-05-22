@@ -454,7 +454,7 @@ class SuperTemperatureSimulation:
         self.stats = []
 
         for i in range(self.n_simulations):
-            print(f"Running simulation {i + 1}/{self.n_simulations}...")
+            print(f"Running simulation {i + 1}/{self.n_simulations}...", end="\r")
             sim = self._create_random_simulation()
             sim.run_simulation()
             self.simulations.append(sim)
