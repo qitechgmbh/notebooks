@@ -148,7 +148,7 @@ class TemperatureSimulation:
             )
 
             # Ensure control signal is between 0 and 1
-            control_signal = max(0, min(1, control_signal / self.max_power))
+            control_signal = max(0, min(1, control_signal))
 
             # Convert control signal to power
             self.target_power_values[i] = self.max_power * control_signal
@@ -690,7 +690,7 @@ class SuperTemperatureSimulation:
         plt.xlabel("Overshoot Error (°C)")
         plt.ylabel("Frequency")
         plt.legend()
-        
+
         # Plot time to reach ±0.5°C distribution
         plt.subplot(2, 2, 4)
         # Filter out infinity values
@@ -710,8 +710,14 @@ class SuperTemperatureSimulation:
             plt.ylabel("Frequency")
             plt.legend()
         else:
-            plt.text(0.5, 0.5, "No simulations reached ±0.5°C", 
-                    ha='center', va='center', transform=plt.gca().transAxes)
+            plt.text(
+                0.5,
+                0.5,
+                "No simulations reached ±0.5°C",
+                ha="center",
+                va="center",
+                transform=plt.gca().transAxes,
+            )
             plt.title("Time to reach ±0.5°C")
             plt.xlabel("Time (seconds)")
             plt.ylabel("Frequency")
